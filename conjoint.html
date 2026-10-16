@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conjoint Analysis | Aliqon Consulting</title>
+<meta name="description" content="Conjoint analysis tells you what customers will actually pay and which features drive the decision. Pricing evidence for founders, investors and science-driven companies.">
+<meta name="theme-color" content="#002599">
+<meta property="og:title" content="The Trade-Off Truth: Conjoint Analysis | Aliqon Consulting">
+<meta property="og:description" content="Pricing evidence before you commit capital. See what customers trade off — and what they'll pay.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://i.ytimg.com/vi/gMVN3IAEgng/hqdefault.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2063; --brand:#002599; --orange:#f7941d; --orange-dk:#d97a06;
+    --ink:#14182b; --muted:#555d75; --line:#e3e6ef; --bg:#ffffff; --soft:#f4f6fb;
+    --radius:14px; --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:Oswald,Impact,sans-serif;letter-spacing:.01em;line-height:1.1;margin:0 0 .5em;color:var(--navy)}
+  h1{font-size:clamp(2.2rem,5.5vw,3.8rem);text-transform:uppercase}
+  h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+  h3{font-size:1.25rem}
+  p{margin:0 0 1em}
+  .eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-dk);margin-bottom:.8rem}
+  .lede{font-size:1.15rem;color:var(--muted);max-width:720px}
+  .btn{display:inline-block;padding:.85rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .15s,background .15s}
+  .btn-primary{background:var(--orange);color:#1b1200}
+  .btn-primary:hover{background:var(--orange-dk);transform:translateY(-1px)}
+  .btn-ghost{color:var(--brand);border:1.5px solid var(--brand)}
+  .btn-ghost:hover{background:var(--brand);color:#fff}
+
+  /* header */
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .logo{font-family:Oswald,sans-serif;font-weight:700;font-size:1.35rem;color:var(--brand);text-decoration:none;letter-spacing:.06em}
+  .logo span{font-family:Inter,sans-serif;font-weight:500;font-size:.85rem;color:var(--muted);letter-spacing:.02em;margin-left:6px}
+  .nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
+  .nav ul a{text-decoration:none;color:var(--ink);font-weight:500;font-size:.95rem}
+  .nav ul a:hover,.nav ul a[aria-current]{color:var(--brand)}
+  .nav .btn{padding:.6rem 1.1rem;font-size:.9rem}
+  @media (max-width:820px){.nav ul li.hide-sm{display:none}}
+
+  /* hero */
+  .hero{padding:64px 0 36px;background:linear-gradient(180deg,var(--soft),#fff)}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+
+  /* video facade */
+  .video{padding:12px 0 64px}
+  .player{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#0b2063;box-shadow:0 24px 60px -24px rgba(0,37,153,.45)}
+  .player button{all:unset;cursor:pointer;position:absolute;inset:0;display:block}
+  .player img{width:100%;height:100%;object-fit:cover;display:block}
+  .player .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;background:var(--orange);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
+  .player button:hover .play,.player button:focus-visible .play{transform:translate(-50%,-50%) scale(1.08)}
+  .player button:focus-visible{outline:3px solid var(--orange);outline-offset:-3px}
+  .player .play svg{width:34px;height:34px;margin-left:6px}
+  .player .runtime{position:absolute;right:14px;bottom:14px;background:rgba(11,32,99,.85);color:#fff;font-size:.8rem;font-weight:600;padding:.35rem .7rem;border-radius:999px}
+  .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video .caption{font-size:.9rem;color:var(--muted);margin-top:12px;text-align:center}
+  @media (max-width:600px){.player .play{width:64px;height:64px}.player .play svg{width:26px;height:26px}}
+
+  section{padding:72px 0}
+  .soft{background:var(--soft)}
+  .grid{display:grid;gap:24px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .card .num{font-family:Oswald,sans-serif;color:var(--orange-dk);font-size:.95rem;letter-spacing:.08em;margin-bottom:.4rem}
+  .card p:last-child{margin-bottom:0}
+  .check{list-style:none;padding:0;margin:0}
+  .check li{position:relative;padding-left:30px;margin-bottom:.8em}
+  .check li::before{content:"";position:absolute;left:0;top:.35em;width:18px;height:18px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%231b1200' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+
+  /* compare */
+  .compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:28px}
+  .compare .card h3{display:flex;align-items:center;gap:10px}
+  .tag{font-family:Inter,sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .55rem;border-radius:6px}
+  .tag.bad{background:#fde8e8;color:#a32020}
+  .tag.good{background:#fff1dc;color:#8a4b00}
+  .quote{font-style:italic;color:var(--muted);border-left:3px solid var(--line);padding-left:14px}
+
+  /* illustrative chart */
+  .chart{margin-top:8px}
+  .bar{display:grid;grid-template-columns:150px 1fr 48px;align-items:center;gap:12px;margin:12px 0;font-size:.95rem}
+  .bar .track{height:14px;background:var(--line);border-radius:7px;overflow:hidden}
+  .bar .fill{height:100%;background:var(--brand);border-radius:7px}
+  .bar.hi .fill{background:var(--orange)}
+  .bar b{font-variant-numeric:tabular-nums;text-align:right}
+  .note{font-size:.82rem;color:var(--muted);margin-top:14px}
+  @media (max-width:520px){.bar{grid-template-columns:110px 1fr 40px;font-size:.88rem}}
+
+  /* stat band */
+  .band{background:var(--navy);color:#fff}
+  .band h2,.band h3{color:#fff}
+  .band .stat{font-family:Oswald,sans-serif;font-size:3rem;color:var(--orange);line-height:1}
+  .band p{color:#cfd6ee}
+
+  /* steps */
+  .steps{counter-reset:s;list-style:none;padding:0;margin:28px 0 0;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .steps li{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-family:Oswald,sans-serif;font-weight:700;margin-bottom:12px}
+
+  /* faq */
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--orange-dk);font-size:1.4rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin:12px 0 0;color:var(--muted)}
+
+  .final{text-align:center}
+  .final .cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:20px}
+  footer{border-top:1px solid var(--line);padding:28px 0;font-size:.88rem;color:var(--muted)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="logo" href="index.html">ALIQON<span>Consulting</span></a>
+    <ul>
+      <li class="hide-sm"><a href="index.html#services">Services</a></li>
+      <li class="hide-sm"><a href="conjoint.html" aria-current="page">Conjoint</a></li>
+      <li class="hide-sm"><a href="index.html#work">Case studies</a></li>
+      <li class="hide-sm"><a href="index.html#about">About</a></li>
+      <li><a class="btn btn-primary" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Conjoint analysis · Pricing evidence</div>
+      <h1>The trade-off truth.</h1>
+      <p class="lede">Ask customers what they want and they'll say "everything, and cheaper." Conjoint analysis makes them choose — and those choices reveal which features drive the purchase and exactly what each segment will pay.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call</a>
+        <a class="btn btn-ghost" href="#investors">For investors</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="video">
+    <div class="wrap">
+      <div class="player" id="player">
+        <button type="button" id="playBtn" aria-label="Play video: The Trade-Off Truth — Selling Conjoint Analysis">
+          <img src="https://i.ytimg.com/vi/gMVN3IAEgng/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/gMVN3IAEgng/hqdefault.jpg'" width="1253" height="704" alt="Kenneth Anderson, MBA — The Trade-Off Truth: Selling Conjoint Analysis">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="#1b1200"/></svg></span>
+        </button>
+        <noscript><a href="https://youtu.be/gMVN3IAEgng" style="position:absolute;inset:0"></a></noscript>
+      </div>
+      <p class="caption">Watch: how conjoint analysis turns customer opinions into pricing decisions you can defend.</p>
+    </div>
+  </div>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="eyebrow">The problem</div>
+      <h2>Most pricing is a guess dressed up as a spreadsheet.</h2>
+      <p class="lede">Launch prices usually come from cost-plus math, a competitor's list price or a founder's gut. Each one leaves money on the table — or quietly caps adoption.</p>
+      <div class="compare">
+        <div class="card">
+          <h3><span class="tag bad">Typical</span> Direct questions</h3>
+          <p class="quote">"How important is battery life?" &nbsp;→ Very important.<br>"Would you pay more for it?" &nbsp;→ Sure.</p>
+          <p>Every feature scores high. Stated willingness-to-pay runs well above real behavior. You learn what people say, not what they do.</p>
+        </div>
+        <div class="card">
+          <h3><span class="tag good">Conjoint</span> Forced trade-offs</h3>
+          <p class="quote">"Product A: longer life, $40 more. Product B: standard life, lower price. Which do you buy?"</p>
+          <p>Repeated across realistic choice sets, the decisions expose the hidden value of every feature — in dollars — and where demand falls off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid g2" style="align-items:center">
+      <div>
+        <div class="eyebrow">What it reveals</div>
+        <h2>Which features earn their cost — and which don't.</h2>
+        <ul class="check">
+          <li><strong>Feature importance.</strong> How much each attribute actually moves the purchase decision.</li>
+          <li><strong>Willingness to pay, in dollars.</strong> The price premium each feature can carry, by segment.</li>
+          <li><strong>Price–volume curve.</strong> Where revenue peaks and where demand breaks.</li>
+          <li><strong>Segments that matter.</strong> Buyers who look alike on paper but trade off very differently.</li>
+          <li><strong>Competitive share.</strong> How your product performs head-to-head against named alternatives.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Relative importance of attributes</h3>
+        <div class="chart" role="img" aria-label="Illustrative chart: price 38%, efficacy 27%, application method 16%, brand 11%, packaging 8%">
+          <div class="bar hi"><span>Price</span><div class="track"><div class="fill" style="width:76%"></div></div><b>38%</b></div>
+          <div class="bar"><span>Efficacy</span><div class="track"><div class="fill" style="width:54%"></div></div><b>27%</b></div>
+          <div class="bar"><span>Application method</span><div class="track"><div class="fill" style="width:32%"></div></div><b>16%</b></div>
+          <div class="bar"><span>Brand</span><div class="track"><div class="fill" style="width:22%"></div></div><b>11%</b></div>
+          <div class="bar"><span>Packaging</span><div class="track"><div class="fill" style="width:16%"></div></div><b>8%</b></div>
+        </div>
+        <p class="note">Illustrative output. Every study is built around your product's real attributes and buyers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft" id="investors">
+    <div class="wrap">
+      <div class="eyebrow">For venture investors</div>
+      <h2>Pricing evidence, before and after the check clears.</h2>
+      <p class="lede">The revenue line in every model rests on a price assumption. Conjoint replaces that assumption with measured buyer behavior.</p>
+      <div class="grid g3" style="margin-top:28px">
+        <div class="card">
+          <div class="num">01 — DILIGENCE</div>
+          <h3>Test the deck's pricing claim</h3>
+          <p>Before you invest, find out whether the target customer will pay the price the model needs — and how sensitive the market really is.</p>
+        </div>
+        <div class="card">
+          <div class="num">02 — VALUE CREATION</div>
+          <h3>Fix pricing in the portfolio</h3>
+          <p>Underpriced products are the fastest margin win available. Give portfolio companies the evidence to raise price or repackage with confidence.</p>
+        </div>
+        <div class="card">
+          <div class="num">03 — NEXT ROUND</div>
+          <h3>Strengthen the raise</h3>
+          <p>Founders who show measured willingness-to-pay and a price–volume simulator tell a far more defensible growth story to the next lead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap grid g2" style="align-items:center">
+      <div>
+        <div class="eyebrow" style="color:var(--orange)">Case study · Ag equipment</div>
+        <h2>415 professional buyers. One launch price.</h2>
+        <p>We measured price sensitivity and feature priorities across golf course superintendents and landscape contractors to set launch pricing for a new granular applicator — so the product went to market at a price grounded in how buyers actually choose.</p>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px">
+        <div><div class="stat">415</div><p>end users surveyed</p></div>
+        <div><div class="stat">2</div><p>buyer segments compared</p></div>
+        <div style="grid-column:1/-1"><div class="stat">20+</div><p>years taking ag and life-science products to market</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">What you walk away with</div>
+      <h2>A decision, not a data dump.</h2>
+      <ol class="steps">
+        <li><h3>Design</h3><p>We define the decision, the attributes and the price ranges with your team, then build realistic choice sets.</p></li>
+        <li><h3>Field</h3><p>Survey programming and fielding with the right buyers — growers, clinicians, contractors, procurement — not a generic panel.</p></li>
+        <li><h3>Analyze</h3><p>Feature importance, willingness-to-pay and segment differences, modeled with established choice-based methods.</p></li>
+        <li><h3>Simulate</h3><p>A price–volume simulator your team keeps, plus a written recommendation you can defend to your board.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap" style="max-width:820px">
+      <div class="eyebrow">Questions</div>
+      <h2>Common questions.</h2>
+      <details>
+        <summary>When is conjoint the right tool?</summary>
+        <p>When a product has several features that can vary, buyers face real alternatives and price is a live decision — launch pricing, repackaging, a new tier or validating a revenue model before investment.</p>
+      </details>
+      <details>
+        <summary>How many respondents do we need?</summary>
+        <p>It depends on the number of attributes and segments. Many B2B studies work with a few hundred qualified buyers; we size the sample during scoping so the results hold up.</p>
+      </details>
+      <details>
+        <summary>How long does a study take?</summary>
+        <p>A typical engagement runs several weeks from scoping to final readout. The longest step is usually reaching the right respondents, and we plan around that from day one.</p>
+      </details>
+      <details>
+        <summary>Can you work with niche or technical buyers?</summary>
+        <p>Yes. Our background is agriculture, life sciences and medical device — markets where the buyer is an agronomist, a superintendent or a hospital administrator, and generic consumer panels don't apply.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap" style="max-width:760px">
+      <h2>Have a price to set — or a price to test?</h2>
+      <p class="lede" style="margin:0 auto">In one call we'll talk through the decision, the buyers and whether conjoint is the right fit.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call →</a>
+        <a class="btn btn-ghost" href="mailto:kanderson@aliqon.com">kanderson@aliqon.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong style="color:var(--brand)">ALIQON CONSULTING</strong> · Conjoint · Techno-economics · Portfolio · Program management</span>
+    <span>Minneapolis, MN · © 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.getElementById('playBtn');
+    if(!btn) return;
+    btn.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/gMVN3IAEgng?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title='The Trade-Off Truth: Selling Conjoint Analysis';
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen=true;
+      document.getElementById('player').replaceChildren(f);
+    });
+  })();
+</script>
+</body>
+</html>
