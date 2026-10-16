@@ -8,6 +8,7 @@ Static one-page site. No build step.
 - `airtable-automations.html` – Airtable setup and automations service page
 - `project-management.html` – project and program management service page
 - `marketing-materials.html` – marketing materials development service page
+- `project-chartering.html` – project chartering service page
 - `kenny-portrait.jpg` – About section photo
 
 ## Publish with GitHub Pages
