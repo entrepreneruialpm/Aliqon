@@ -3,260 +3,432 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Airtable Setup &amp; Automations | Aliqon Consulting</title>
-<meta name="description" content="Airtable setup and automations for project and portfolio teams: trackers, intake forms, interfaces, dashboards and automated status updates, approvals and notifications, with a handoff your team can maintain.">
-<meta property="og:title" content="Airtable Setup &amp; Automations | Aliqon Consulting">
-<meta property="og:description" content="Stop copying status updates by hand. An Airtable base built around your workflow, with automations your team can maintain.">
+<title>Airtable &amp; No-Code Automations | Aliqon Consulting</title>
+<meta name="description" content="Integrated business systems on Airtable with Make.com, Softr and the tools you already pay for: custom CRMs, scheduling apps, document automation and live dashboards.">
+<meta property="og:title" content="Airtable &amp; No-Code Automations | Aliqon Consulting">
+<meta property="og:description" content="Stop bending your business to fit the software. Integrated systems built around the way your team actually works.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#002599">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-  :root{
-    --brand:#002599;
-    --brand-dark:#001a6b;
-    --brand-tint:#eef2ff;
-    --ink:#0f172a;
-    --muted:#475569;
-    --line:#e2e8f0;
-    --bg:#ffffff;
-    --bg-alt:#f8fafc;
-    --accent:#f59e0b;
-    --radius:14px;
-    --max:1120px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
-  a{color:var(--brand)}
-  img{max-width:100%;display:block}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
-  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0 0 .6em}
-  h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800}
-  h2{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800}
-  h3{font-size:1.15rem;font-weight:700}
-  p{margin:0 0 1em}
-  .lead{font-size:1.15rem;color:var(--muted);max-width:720px}
-  section{padding:80px 0}
-  .alt{background:var(--bg-alt)}
-
-  /* Nav */
-  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
-  .logo{font-weight:800;letter-spacing:.14em;color:var(--brand);text-decoration:none;font-size:1.05rem}
-  .logo span{font-weight:500;letter-spacing:.04em;color:var(--ink);margin-left:6px}
-  .nav-links{display:flex;gap:22px;align-items:center}
-  .nav-links a{color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:500}
-  .nav-links a:hover{color:var(--brand)}
-  .btn{display:inline-block;background:var(--brand);color:#fff !important;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px;transition:background .2s,transform .2s}
-  .btn:hover{background:var(--brand-dark);transform:translateY(-1px)}
-  .btn-ghost{background:transparent;color:var(--brand) !important;border:2px solid var(--brand)}
-  .btn-ghost:hover{background:var(--brand-tint)}
-  .nav .btn{padding:9px 18px;font-size:.9rem}
-  @media(max-width:820px){.nav-links a:not(.btn){display:none}}
-
-  /* Hero */
-  .hero{padding:72px 0 56px;background:linear-gradient(180deg,var(--brand-tint),#fff)}
-  .crumb{font-size:.88rem;color:var(--muted);margin-bottom:18px}
-  .crumb a{color:var(--muted);text-decoration:none}
-  .crumb a:hover{color:var(--brand)}
-  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-
-  /* Video */
-  .video-shell{max-width:920px;margin:48px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px -20px rgba(0,37,153,.35);background:#000;position:relative;aspect-ratio:16/9}
-  .video-shell iframe,.video-shell button{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .video-facade{cursor:pointer;padding:0;background:#000 center/cover no-repeat}
-    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:var(--brand);display:grid;place-items:center;z-index:2;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
-  .video-facade:hover .play{transform:translate(-50%,-50%) scale(1.07)}
-  .play svg{margin-left:6px}
-  .video-label{position:absolute;left:24px;bottom:20px;z-index:2;color:#fff;font-weight:600;text-align:left;font-size:1rem}
-  .video-caption{text-align:center;color:var(--muted);font-size:.92rem;margin-top:14px}
-
-  /* Grids & cards */
-  .grid{display:grid;gap:22px}
-  .g2{grid-template-columns:repeat(2,1fr)}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  @media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}section{padding:60px 0}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-  .card p{color:var(--muted);margin:0}
-  .num{font-size:.8rem;font-weight:700;color:var(--brand);letter-spacing:.1em;margin-bottom:10px;display:block}
-  .icon{width:44px;height:44px;border-radius:10px;background:var(--brand-tint);display:grid;place-items:center;margin-bottom:14px;color:var(--brand)}
-
-  /* Breakpoints list */
-  .breaks{counter-reset:b;list-style:none;padding:0;margin:0}
-  .breaks li{position:relative;padding:18px 0 18px 58px;border-bottom:1px solid var(--line)}
-  .breaks li:last-child{border-bottom:0}
-  .breaks li::before{counter-increment:b;content:counter(b);position:absolute;left:0;top:16px;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center}
-  .breaks strong{display:block;margin-bottom:2px}
-  .breaks span{color:var(--muted)}
-
-  /* Split */
-  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-  @media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
-
-  /* Chart */
-  .chart-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
-  .chart-card h3{font-size:1rem;margin-bottom:4px}
-  .chart-card .sub{font-size:.85rem;color:var(--muted);margin-bottom:12px}
-  .chart-card svg{width:100%;height:auto}
-  .note{font-size:.78rem;color:var(--muted);margin-top:8px;font-style:italic}
-
-  /* Investor band */
-  .band{background:var(--brand);color:#fff}
-  .band .eyebrow{color:#9fb4ff}
-  .band h2{color:#fff}
-  .band p{color:#dbe4ff}
-  .band .card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
-  .band .card h3{color:#fff}
-  .band .card p{color:#dbe4ff}
-  .band .btn{background:#fff;color:var(--brand) !important}
-  .band .btn:hover{background:var(--brand-tint)}
-
-  /* Case */
-  .case{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-  .case-stat{font-size:2.2rem;font-weight:800;color:var(--brand);line-height:1.1}
-  .case-stat small{display:block;font-size:.85rem;font-weight:500;color:var(--muted);margin-top:6px}
-  .tag{display:inline-block;font-size:.78rem;font-weight:600;color:var(--brand);background:var(--brand-tint);padding:4px 10px;border-radius:999px;margin:0 6px 6px 0}
-  @media(max-width:700px){.case{grid-template-columns:1fr}}
-
-  /* Steps */
-  .steps{counter-reset:s}
-  .steps .card{position:relative;padding-top:56px}
-  .steps .card::before{counter-increment:s;content:"0" counter(s);position:absolute;top:22px;left:26px;font-weight:800;color:var(--brand);font-size:1.1rem}
-
-  /* FAQ */
-  details{border-bottom:1px solid var(--line);padding:18px 0}
-  summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--brand);font-size:1.4rem;line-height:1}
-  details[open] summary::after{content:"–"}
-  details p{color:var(--muted);margin:12px 0 0}
-
-  /* CTA */
-  .cta{text-align:center}
-  .cta .lead{margin:0 auto 28px}
-
-  footer{border-top:1px solid var(--line);padding:32px 0;font-size:.88rem;color:var(--muted)}
-  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  footer a{color:var(--muted);text-decoration:none}
-  footer a:hover{color:var(--brand)}
+body{margin:0;background:#F4F6FA;color:#0E1530;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#002599}a:hover{color:#0E1530}
+.btn-primary:hover{background:#0E1530 !important}
+.btn-orange:hover{background:#FFB847 !important}
+.btn-ghost:hover{background:#0E1530 !important;color:#F4F6FA !important}
+.nav a{color:#0E1530;text-decoration:none}
+.nav a:hover{color:#002599;text-decoration:underline;text-underline-offset:4px}
+.video-link:hover .play{background:#FFB847 !important;transform:scale(1.06)}
+.play{transition:transform .15s ease}
+html{scroll-behavior:smooth}
 </style>
 <script defer src="https://t.contentsquare.net/uxa/d4b372635f512.js"></script>
 </head>
 <body>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1530; background: #F4F6FA; min-height: 100vh">
 
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="index.html">ALIQON<span>Consulting</span></a>
-    <nav class="nav-links">
-      <a href="index.html#services">Services</a>
-      <a href="index.html#sectors">Sectors</a>
-      <a href="index.html#work">Case studies</a>
-      <a href="index.html#about">About</a>
-      <a class="btn" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<section class="hero">
-  <div class="wrap">
-    <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#services">Services</a> / Airtable setup &amp; automations</div>
-    <span class="eyebrow">07 — Run it</span>
-    <h1>Stop copying status updates by hand.</h1>
-    <p class="lead">Where do your projects, portfolio scores and status updates actually live? For most teams it is a spreadsheet, an email thread and a Slack message, all copied between by hand. We build the Airtable base your workflow actually needs, automate the repetitive parts, and hand it over so your team can run it.</p>
-    <div class="hero-ctas">
-      <a class="btn" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call</a>
-      <a class="btn btn-ghost" href="#build">See what we build</a>
+  <!-- NAV -->
+  <header style="border-bottom: 1px solid #D6DAE3; background: #F4F6FA">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0E1530">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="32" height="32" stroke="#0092BB" stroke-width="2"></rect>
+          <path d="M8 26 L17 8 L26 26" stroke="#002599" stroke-width="2.4" stroke-linejoin="miter"></path>
+          <path d="M12 19 H22" stroke="#FAA21B" stroke-width="3"></path>
+        </svg>
+        <span style="font-family: 'Archivo', sans-serif; font-weight: 750; font-stretch: 112%; font-size: 20px; letter-spacing: 0.02em">ALIQON</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5268; letter-spacing: 0.08em; text-transform: uppercase">Consulting</span>
+      </a>
+      <nav class="nav" aria-label="Primary" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+        <a href="index.html">Home</a>
+        <a href="#builds">What we build</a>
+        <a href="#ash-tree">Save The Ash Tree</a>
+        <a href="#seahorse">SeaHorse</a>
+        <a href="#live-data">Live data</a>
+        <a class="btn-primary" href="https://calendly.com/kenny-entrepreneurialpm/30min" target="_blank" rel="noopener" style="background: #002599; color: #FFFFFF; padding: 12px 20px; text-decoration: none; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Book a systems call</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section>
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <span class="eyebrow">Why it matters</span>
-        <h2>Good decisions need one place where the facts live.</h2>
-        <p class="lead">Portfolio reviews, stage gates and program updates all depend on current information. When that information is scattered across files and inboxes, people spend their time chasing it instead of acting on it.</p>
-        <p>We design the system around how your team already works, so the tracker reflects reality without someone retyping it every week.</p>
+  <!-- HERO -->
+  <section id="top" style="border-bottom: 1px solid #D6DAE3">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 88px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 56px; align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 26px">
+        <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #002599">07 — Run it · Airtable &amp; no-code automations</p>
+        <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 780; font-stretch: 108%; font-size: clamp(40px, 5.2vw, 70px); line-height: 1.0; letter-spacing: -0.02em">Stop bending your business to fit the software.</h1>
+        <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #333B52; max-width: 560px">Off-the-shelf CRMs make you work their way. We build integrated systems on Airtable — with Make.com, Softr and the tools you already pay for — around the way your team actually sells, schedules and delivers.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 6px">
+          <a class="btn-orange" href="https://calendly.com/kenny-entrepreneurialpm/30min" target="_blank" rel="noopener" style="background: #FAA21B; color: #0E1530; padding: 16px 26px; font-size: 16px; font-weight: 600; text-decoration: none; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center">Book a systems call</a>
+          <a class="btn-ghost" href="#live-data" style="border: 1.5px solid #0E1530; color: #0E1530; padding: 16px 26px; font-size: 16px; font-weight: 600; text-decoration: none; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center">See live dashboards</a>
+        </div>
       </div>
-      <div class="card">
-        <h3>Signs it is time</h3>
-        <ol class="breaks">
-          <li><strong>Several versions of the truth</strong><span>The portfolio list in one file, the status in another, the budget in a third.</span></li>
-          <li><strong>Manual status reporting</strong><span>Someone collects updates and rebuilds the same report every cycle.</span></li>
-          <li><strong>Approvals that stall</strong><span>Requests wait in inboxes with no clear owner or reminder.</span></li>
-          <li><strong>Intake by email</strong><span>New project ideas arrive in every format and have to be re-entered to be scored.</span></li>
+
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <a class="video-link" href="https://youtu.be/wljUsDgORV4?si=4AmkPgsH5pQJr1Yp" target="_blank" rel="noopener" aria-label="Watch the explainer video: The Off-the-Shelf Trap — Building Integrated Systems and Automations on Airtable (opens YouTube)" style="position: relative; display: block; border: 1px solid #D6DAE3; border-top: 4px solid #FAA21B; background: #0E1530; text-decoration: none">
+          <img src="assets/airtable/video-cover.jpg" alt="Video cover: The Off-the-Shelf Trap — Building Integrated Systems &amp; Automations on Airtable, with Kenneth Anderson, MBA, PMP, MSP" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover">
+          <span class="play" style="position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: #FAA21B; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(14,21,48,0.35)">
+            <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 L19 12 L8 19 Z" fill="#0E1530"></path></svg>
+          </span>
+        </a>
+        <p style="margin: 0; display: flex; justify-content: space-between; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5268"><span>Explainer · The Off-the-Shelf Trap</span><span>Watch on YouTube ↗</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TRAP -->
+  <section style="border-bottom: 1px solid #D6DAE3; background: #E8EDF5">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 56px; align-items: start">
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #002599">The off-the-shelf trap</p>
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.015em">Five subscriptions. Zero of them talk to each other.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 2px; background: #C8D0DE; border: 2px solid #C8D0DE">
+        
+          <div style="background: #F4F6FA; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5268">01</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; line-height: 1.2">Your workflow bends to the tool</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #333B52">Packaged CRMs assume a sales process that isn’t yours, so the team invents workarounds.</p>
+          </div>
+        
+          <div style="background: #F4F6FA; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5268">02</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; line-height: 1.2">Data lives in silos</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #333B52">Leads in one app, jobs in another, invoices in a third — and a spreadsheet stitching them together.</p>
+          </div>
+        
+          <div style="background: #F4F6FA; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5268">03</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; line-height: 1.2">People become the integration</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #333B52">Hours each week go to re-typing names, dates and amounts from one screen into the next.</p>
+          </div>
+        
+          <div style="background: #F4F6FA; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5268">04</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; line-height: 1.2">Reports are always late</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #333B52">By the time someone builds the month-end summary, the decision it should have informed has passed.</p>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILD -->
+  <section id="builds" style="border-bottom: 1px solid #D6DAE3">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 48px; align-items: end; padding-bottom: 48px">
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(34px, 3.8vw, 52px); line-height: 1.05; letter-spacing: -0.015em">What we build.</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #333B52">One source of truth in Airtable, with no-code automations moving data between your forms, ads, inbox, calendar and field team — so nobody re-types a record twice.</p>
+      </div>
+      <div style="border-top: 3px solid #0092BB; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 0 48px">
+        
+          <article style="padding: 30px 0; border-bottom: 1px solid #D6DAE3; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #002599">01</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-stretch: 105%; font-size: 24px; line-height: 1.2">Custom CRM &amp; lead pipeline</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Every inquiry from ads, web forms, phone and referrals lands in one Airtable base with source, status and next step — no lead falls through.</p>
+          </article>
+        
+          <article style="padding: 30px 0; border-bottom: 1px solid #D6DAE3; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #002599">02</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-stretch: 105%; font-size: 24px; line-height: 1.2">Scheduling &amp; field-ops apps</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Softr portals on top of Airtable so technicians and crew log in and see only their own jobs, routes and customer notes.</p>
+          </article>
+        
+          <article style="padding: 30px 0; border-bottom: 1px solid #D6DAE3; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #002599">03</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-stretch: 105%; font-size: 24px; line-height: 1.2">Document automation</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Quotes, proposals and service reports generated as branded PDFs with Documint and emailed automatically when a record changes.</p>
+          </article>
+        
+          <article style="padding: 30px 0; border-bottom: 1px solid #D6DAE3; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #002599">04</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-stretch: 105%; font-size: 24px; line-height: 1.2">Marketing feedback loops</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Facebook Lead Ads and website forms piped in through Make.com, with closed sales sent back to the ad platform so it learns who actually buys.</p>
+          </article>
+        
+          <article style="padding: 30px 0; border-bottom: 1px solid #D6DAE3; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #002599">05</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-stretch: 105%; font-size: 24px; line-height: 1.2">Real-time dashboards</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Interfaces that answer the owner’s questions — volume, source, season, what’s booked — straight from live records.</p>
+          </article>
+        
+          <article style="padding: 30px 0; border-bottom: 1px solid #D6DAE3; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #002599">06</span>
+            <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-stretch: 105%; font-size: 24px; line-height: 1.2">Compliance &amp; admin automations</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Recurring filings, reminders, approvals and notifications triggered by the data itself, with scripting where no-code runs out.</p>
+          </article>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVE THE ASH TREE -->
+  <section id="ash-tree" style="background: #002599; color: #F4F6FA">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 56px; align-items: start">
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #FAA21B">Case study · Save The Ash Tree Co.</p>
+          <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.015em">A complete management system for a multi-market field-service business.</h2>
+          <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #D5DBEA">Save The Ash Tree is a seasonal tree-injection company protecting ash trees from Emerald Ash Borer across several Midwest markets — Minneapolis, Sioux Falls, Lincoln and beyond. Every season compresses lead generation, quoting, scheduling and treatment into a few short months, with technicians spread across states.</p>
+          <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #D5DBEA">Kenny designed and built the system that runs it end to end: from the first Facebook ad click to the signed treatment report in the customer's inbox.</p>
+          <ul style="list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Airtable</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Make.com</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Softr</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Documint</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Gmail</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">GoHighLevel</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Facebook Lead Ads + CAPI</li>
+            
+              <li style="border: 1px solid #4F67C4; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #F4F6FA">Wix</li>
+            
+          </ul>
+        </div>
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 3px solid #0092BB">
+          
+            <li style="display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid #2F45A8">
+              <span style="width: 44px; height: 44px; border: 2px solid #FAA21B; color: #FAA21B; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 15px">1</span>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; color: #FFFFFF">Capture every lead automatically</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D5DBEA">Facebook Lead Ads and website forms flow through Make.com into Airtable, tagged by market and campaign.</p>
+              </div>
+            </li>
+          
+            <li style="display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid #2F45A8">
+              <span style="width: 44px; height: 44px; border: 2px solid #FAA21B; color: #FAA21B; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 15px">2</span>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; color: #FFFFFF">Follow up without lifting a finger</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D5DBEA">GoHighLevel texts and emails new leads within minutes — including an AI assistant persona that answers common tree questions.</p>
+              </div>
+            </li>
+          
+            <li style="display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid #2F45A8">
+              <span style="width: 44px; height: 44px; border: 2px solid #FAA21B; color: #FAA21B; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 15px">3</span>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; color: #FFFFFF">Teach the ads who buys</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D5DBEA">Closed sales are sent back to Facebook through the Conversions API, so ad spend shifts toward people who become customers.</p>
+              </div>
+            </li>
+          
+            <li style="display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid #2F45A8">
+              <span style="width: 44px; height: 44px; border: 2px solid #FAA21B; color: #FAA21B; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 15px">4</span>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; color: #FFFFFF">Schedule technicians across states</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D5DBEA">A Softr injection-scheduling app on Airtable where each logged-in technician sees only their own jobs and route.</p>
+              </div>
+            </li>
+          
+            <li style="display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid #2F45A8">
+              <span style="width: 44px; height: 44px; border: 2px solid #FAA21B; color: #FAA21B; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 15px">5</span>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; color: #FFFFFF">Tag and track every tree</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D5DBEA">QR and barcode images generated and attached to each tree’s record, so treatment history follows the tree.</p>
+              </div>
+            </li>
+          
+            <li style="display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid #2F45A8">
+              <span style="width: 44px; height: 44px; border: 2px solid #FAA21B; color: #FAA21B; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 15px">6</span>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px; color: #FFFFFF">Deliver the paperwork automatically</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D5DBEA">Documint builds the PDF and Gmail sends it to the customer the moment a job is marked complete.</p>
+              </div>
+            </li>
+          
         </ol>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="alt" id="build">
-  <div class="wrap">
-    <span class="eyebrow">What you walk away with</span>
-    <h2>An Airtable base designed around your workflow.</h2>
-    <p class="lead">No generic template. We start from your process, then build only what your team will use.</p>
-    <div class="grid g4" style="margin-top:32px">
-      <div class="card"><span class="num">TRACK</span><h3>Project &amp; portfolio trackers</h3><p>Projects, scores, stages and owners in one connected base.</p></div>
-      <div class="card"><span class="num">CAPTURE</span><h3>Intake forms</h3><p>A single front door for new requests, so every idea arrives in the same structure.</p></div>
-      <div class="card"><span class="num">SEE</span><h3>Interfaces &amp; dashboards</h3><p>Views built for each audience, from the project team to the sponsor.</p></div>
-      <div class="card"><span class="num">AUTOMATE</span><h3>Automations</h3><p>Status updates, approvals and notifications that run without anyone chasing them.</p></div>
+  <!-- SEAHORSE -->
+  <section id="seahorse" style="border-bottom: 1px solid #D6DAE3">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 56px; align-items: start">
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #002599">Case study · SeaHorse Water Taxi</p>
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.015em">A Caribbean water taxi that runs on Airtable.</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #333B52">SeaHorse Water Taxi is a private water taxi and charter service Kenny co-owns with his wife, operating out of Red Hook, St. Thomas. A Grady-White 330 Express carries travelers between St. Thomas, St. John and the British Virgin Islands — on the guest's schedule, not the ferry's.</p>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #333B52">Demand swings hard with the season, inquiries arrive from a dozen channels, and international crossings come with paperwork. So every inquiry, quote, trip and filing lives in one Airtable base — and the dashboards below update the moment a new lead lands.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D6DAE3; border-top: 4px solid #0092BB">
+        <div style="padding: 18px 24px; border-bottom: 1px solid #D6DAE3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A5268">What the system handles</div>
+        
+          <div style="padding: 18px 24px; border-bottom: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">One inquiry record per trip</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #333B52">Route, date, party size and the guest’s own reasons captured on the booking form.</span>
+          </div>
+        
+          <div style="padding: 18px 24px; border-bottom: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">Source attribution</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #333B52">Every lead tagged by channel — Google, TripAdvisor, concierges, hotels, repeat clients and more.</span>
+          </div>
+        
+          <div style="padding: 18px 24px; border-bottom: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">Crossing paperwork</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #333B52">Vessel arrival and departure filings (eNOAD) prepared automatically through Make.com.</span>
+          </div>
+        
+          <div style="padding: 18px 24px; border-bottom: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">Look-ahead demand</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #333B52">Requested travel dates rolled up so crew and boat scheduling start weeks out.</span>
+          </div>
+        
+          <div style="padding: 18px 24px; border-bottom: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">Year-over-year history</span>
+            <span style="font-size: 16px; line-height: 1.5; color: #333B52">Every lead since 2021 kept, so this season is always measured against the last ones.</span>
+          </div>
+        
+      </div>
     </div>
-    <p style="margin-top:28px">Every engagement ends with a handoff your team can maintain, so the system does not depend on us to keep running.</p>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Works with the rest of what we do</span>
-    <h2>The system behind the decisions.</h2>
-    <div class="grid g3" style="margin-top:32px">
-      <div class="card"><h3>Portfolio selection</h3><p>Scoring criteria and stage-gate screens built into the tracker, so every candidate is evaluated the same way.</p></div>
-      <div class="card"><h3>Project chartering</h3><p>Charters, scope boundaries and decision rights kept alongside the project they govern.</p></div>
-      <div class="card"><h3>Program management</h3><p>Plans, risks, issues and reporting cadence in one place, with updates that flow to the people who need them.</p></div>
+  <!-- LIVE DATA -->
+  <section id="live-data" style="border-bottom: 1px solid #D6DAE3; background: #E8EDF5">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 48px; align-items: end; padding-bottom: 48px">
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #002599">Real-time data tracking</p>
+          <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(34px, 3.8vw, 52px); line-height: 1.05; letter-spacing: -0.015em">Live dashboards, not month-end reports.</h2>
+        </div>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #333B52">These are SeaHorse's actual Airtable dashboards. No one exports a spreadsheet or builds a slide — each chart reads straight from the records as they're created, so the owners see this week against the last five years, where leads come from and what's booked ahead, any time they open a phone.</p>
+      </div>
+
+      <figure style="margin: 0 0 32px; background: #FFFFFF; border: 1px solid #D6DAE3; border-top: 4px solid #FAA21B">
+        <img src="assets/airtable/leads-per-week.png" alt="Stacked bar chart of SeaHorse leads per week by year, 2021 through 2026, showing a January peak and a late-summer low" style="display: block; width: 100%; height: auto">
+        <figcaption style="padding: 20px 24px; border-top: 1px solid #E7EAF1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px 32px">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px">Leads per week, every year since 2021</span>
+          <span style="font-size: 16px; line-height: 1.55; color: #333B52">Five-plus seasons stacked week by week. The pattern tells the owners when to raise ad budgets, when to bring on crew and when a slow week is normal — or a problem.</span>
+        </figcaption>
+      </figure>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 32px">
+        
+          <figure style="margin: 0; background: #FFFFFF; border: 1px solid #D6DAE3; border-top: 4px solid #0092BB; display: flex; flex-direction: column">
+            <div style="padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 300px; box-sizing: border-box">
+              <img src="assets/airtable/leads-per-month.png" alt="Stacked bar chart of leads per month by year, January through December" style="display: block; max-width: 100%; max-height: 420px; height: auto">
+            </div>
+            <figcaption style="padding: 20px 24px; border-top: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 8px; margin-top: auto">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #002599">How do we compare to this month last year?</span>
+              <span style="font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px">Leads per month, year over year</span>
+              <span style="font-size: 16px; line-height: 1.55; color: #333B52">A glance answers whether this month is ahead of or behind the same month in prior years — before it’s over.</span>
+            </figcaption>
+          </figure>
+        
+          <figure style="margin: 0; background: #FFFFFF; border: 1px solid #D6DAE3; border-top: 4px solid #0092BB; display: flex; flex-direction: column">
+            <div style="padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 300px; box-sizing: border-box">
+              <img src="assets/airtable/lead-sources.png" alt="Pie chart of lead sources over the last 90 days" style="display: block; max-width: 100%; max-height: 420px; height: auto">
+            </div>
+            <figcaption style="padding: 20px 24px; border-top: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 8px; margin-top: auto">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #002599">Where should the marketing budget go?</span>
+              <span style="font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px">How did you hear about us? — last 90 days</span>
+              <span style="font-size: 16px; line-height: 1.55; color: #333B52">Rolling source attribution shows which channels are pulling their weight, so spend follows results.</span>
+            </figcaption>
+          </figure>
+        
+          <figure style="margin: 0; background: #FFFFFF; border: 1px solid #D6DAE3; border-top: 4px solid #0092BB; display: flex; flex-direction: column">
+            <div style="padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 300px; box-sizing: border-box">
+              <img src="assets/airtable/why-water-taxi.png" alt="Bar chart of reasons guests chose a private water taxi over the last 90 days; saving time leads" style="display: block; max-width: 100%; max-height: 420px; height: auto">
+            </div>
+            <figcaption style="padding: 20px 24px; border-top: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 8px; margin-top: auto">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #002599">What should the ads say?</span>
+              <span style="font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px">Why guests choose a water taxi</span>
+              <span style="font-size: 16px; line-height: 1.55; color: #333B52">Guests tell us in their own words. Saving time leads by a wide margin, followed by traveling on their own timetable — so that’s what the ad copy says.</span>
+            </figcaption>
+          </figure>
+        
+          <figure style="margin: 0; background: #FFFFFF; border: 1px solid #D6DAE3; border-top: 4px solid #0092BB; display: flex; flex-direction: column">
+            <div style="padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 300px; box-sizing: border-box">
+              <img src="assets/airtable/requested-dates.png" alt="Bar chart of inquiries by requested transport date, last 14 days and next 45 days" style="display: block; max-width: 100%; max-height: 420px; height: auto">
+            </div>
+            <figcaption style="padding: 20px 24px; border-top: 1px solid #E7EAF1; display: flex; flex-direction: column; gap: 8px; margin-top: auto">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #002599">Who do we need on the water, and when?</span>
+              <span style="font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 20px">Requested trip dates — last 14 &amp; next 45 days</span>
+              <span style="font-size: 16px; line-height: 1.55; color: #333B52">Demand spikes show up weeks in advance, giving time to line up captains and boats for the busy days.</span>
+            </figcaption>
+          </figure>
+        
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="alt">
-  <div class="wrap">
-    <span class="eyebrow">How an engagement runs</span>
-    <h2>Fixed scope. Working system. Then we hand it over.</h2>
-    <div class="grid g3 steps" style="margin-top:32px">
-      <div class="card"><h3>Scoping call</h3><p>We learn how work flows through your team today and where it gets stuck. You learn whether we are the right fit.</p></div>
-      <div class="card"><h3>Fixed proposal</h3><p>One page: what we will build, the deliverables, the timeline and a fixed fee set by the scope of work.</p></div>
-      <div class="card"><h3>Build &amp; handoff</h3><p>We build, test with your team and hand over a base your people can maintain.</p></div>
+  <!-- HOW IT WORKS -->
+  <section style="border-bottom: 1px solid #D6DAE3">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px">
+      <p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #002599">How a build runs</p>
+      <h2 style="margin: 0 0 48px; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(34px, 3.8vw, 52px); line-height: 1.05; letter-spacing: -0.015em; max-width: 820px">Map it. Build it. Hand it over.</h2>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 32px">
+        
+          <li style="display: flex; flex-direction: column; gap: 12px">
+            <span style="width: 48px; height: 48px; border: 2px solid #0092BB; color: #002599; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 16px">1</span>
+            <h3 style="margin: 8px 0 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 22px">Map the workflow</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">We walk through how work actually moves today — every form, inbox, spreadsheet and handoff — and agree on what the system must answer.</p>
+          </li>
+        
+          <li style="display: flex; flex-direction: column; gap: 12px">
+            <span style="width: 48px; height: 48px; border: 2px solid #0092BB; color: #002599; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 16px">2</span>
+            <h3 style="margin: 8px 0 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 22px">Build &amp; automate</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">The Airtable base, interfaces, portals and automations, built in stages so your team uses each piece while the next is underway.</p>
+          </li>
+        
+          <li style="display: flex; flex-direction: column; gap: 12px">
+            <span style="width: 48px; height: 48px; border: 2px solid #0092BB; color: #002599; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 16px">3</span>
+            <h3 style="margin: 8px 0 0; font-family: 'Archivo', sans-serif; font-weight: 720; font-size: 22px">Train &amp; hand off</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333B52">Documentation, short training videos and a walkthrough, so your team can run and adjust the system without calling us.</p>
+          </li>
+        
+      </ol>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta">
-  <div class="wrap">
-    <h2>Ready to retire the copy-and-paste?</h2>
-    <p class="lead">Tell us how your projects and portfolio are tracked today. In one call we will talk through what a first build could look like.</p>
-    <div class="hero-ctas" style="justify-content:center">
-      <a class="btn" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call →</a>
-      <a class="btn btn-ghost" href="mailto:kanderson@aliqon.com?subject=Airtable%20setup%20and%20automations">Email kanderson@aliqon.com</a>
+  <!-- ABOUT -->
+  <section id="about" style="border-bottom: 1px solid #D6DAE3">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 64px; align-items: start">
+      <img src="kenny-portrait.jpg" alt="Portrait of Kenneth Anderson" style="display: block; width: 100%; max-width: 400px; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 35%; border-bottom: 6px solid #FAA21B; background: #DCE2EE">
+      <div style="display: flex; flex-direction: column; gap: 22px">
+        <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #002599">Who builds it</p>
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 760; font-stretch: 108%; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.015em">Kenneth Anderson, MBA, PMP, MSP</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #333B52">Kenny isn't a developer selling software — he's an operator who builds the systems his own companies run on. He spent 20+ years in agricultural biotech, commercialization and consulting before running two businesses of his own, and he designs every base the way a program manager would: around decisions, owners and handoffs.</p>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #333B52">That means your system gets scoped like a project, documented like a deliverable and left in the hands of a team that knows how to run it.</p>
+        <ul style="list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
+          <li style="border: 1px solid #B5BFD2; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">MBA, Strategy &amp; Entrepreneurship</li>
+          <li style="border: 1px solid #B5BFD2; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">PMP</li>
+          <li style="border: 1px solid #B5BFD2; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">MSP</li>
+          <li style="border: 1px solid #B5BFD2; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">Owner-operator · 2 businesses</li>
+          <li style="border: 1px solid #B5BFD2; padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">20+ years</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-</main>
+  <!-- CTA -->
+  <section id="contact" style="background: #0E1530; color: #FFFFFF; border-top: 6px solid #FAA21B">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px; align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 780; font-stretch: 108%; font-size: clamp(36px, 4.2vw, 58px); line-height: 1.02; letter-spacing: -0.02em">Still copying data between tabs?</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #DCE4FF; max-width: 520px">Show us the tools and spreadsheets you're juggling. In one call we'll sketch what an integrated Airtable system could look like for your business.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
+        <a class="btn-orange" href="https://calendly.com/kenny-entrepreneurialpm/30min" target="_blank" rel="noopener" style="background: #FAA21B; color: #0E1530; padding: 18px 28px; font-size: 17px; font-weight: 600; text-decoration: none; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">Book a systems call →</a>
+        <a href="https://youtu.be/wljUsDgORV4?si=4AmkPgsH5pQJr1Yp" target="_blank" rel="noopener" style="color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 15px; text-underline-offset: 4px">or watch the explainer first ↗</a>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <div><strong style="color:var(--brand);letter-spacing:.12em">ALIQON CONSULTING</strong> · Minneapolis, MN · © 2026</div>
-    <div><a href="index.html">Home</a> · <a href="index.html#services">All services</a> · <a href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a call</a></div>
-  </div>
-</footer>
+  <!-- FOOTER -->
+  <footer style="background: #0E1530; color: #A8B2CC; border-top: 1px solid #22305E">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 40px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; font-size: 14px">
+      <span style="font-family: 'Archivo', sans-serif; font-weight: 750; font-stretch: 112%; color: #F4F6FA; letter-spacing: 0.02em">ALIQON CONSULTING</span>
+      <span>Airtable · Make.com · Softr · Documint · GoHighLevel · Dashboards</span>
+      <span>Minneapolis, MN · © 2026</span>
+    </div>
+  </footer>
+
+</div>
 
 </body>
 </html>
