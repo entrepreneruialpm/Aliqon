@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airtable Setup &amp; Automations | Aliqon Consulting</title>
+<meta name="description" content="Airtable setup and automations for project and portfolio teams: trackers, intake forms, interfaces, dashboards and automated status updates, approvals and notifications, with a handoff your team can maintain.">
+<meta property="og:title" content="Airtable Setup &amp; Automations | Aliqon Consulting">
+<meta property="og:description" content="Stop copying status updates by hand. An Airtable base built around your workflow, with automations your team can maintain.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#002599">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#002599;
+    --brand-dark:#001a6b;
+    --brand-tint:#eef2ff;
+    --ink:#0f172a;
+    --muted:#475569;
+    --line:#e2e8f0;
+    --bg:#ffffff;
+    --bg-alt:#f8fafc;
+    --accent:#f59e0b;
+    --radius:14px;
+    --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0 0 .6em}
+  h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800}
+  h2{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800}
+  h3{font-size:1.15rem;font-weight:700}
+  p{margin:0 0 1em}
+  .lead{font-size:1.15rem;color:var(--muted);max-width:720px}
+  section{padding:80px 0}
+  .alt{background:var(--bg-alt)}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+  .logo{font-weight:800;letter-spacing:.14em;color:var(--brand);text-decoration:none;font-size:1.05rem}
+  .logo span{font-weight:500;letter-spacing:.04em;color:var(--ink);margin-left:6px}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:500}
+  .nav-links a:hover{color:var(--brand)}
+  .btn{display:inline-block;background:var(--brand);color:#fff !important;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px;transition:background .2s,transform .2s}
+  .btn:hover{background:var(--brand-dark);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--brand) !important;border:2px solid var(--brand)}
+  .btn-ghost:hover{background:var(--brand-tint)}
+  .nav .btn{padding:9px 18px;font-size:.9rem}
+  @media(max-width:820px){.nav-links a:not(.btn){display:none}}
+
+  /* Hero */
+  .hero{padding:72px 0 56px;background:linear-gradient(180deg,var(--brand-tint),#fff)}
+  .crumb{font-size:.88rem;color:var(--muted);margin-bottom:18px}
+  .crumb a{color:var(--muted);text-decoration:none}
+  .crumb a:hover{color:var(--brand)}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+  /* Video */
+  .video-shell{max-width:920px;margin:48px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px -20px rgba(0,37,153,.35);background:#000;position:relative;aspect-ratio:16/9}
+  .video-shell iframe,.video-shell button{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-facade{cursor:pointer;padding:0;background:#000 center/cover no-repeat}
+    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:var(--brand);display:grid;place-items:center;z-index:2;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
+  .video-facade:hover .play{transform:translate(-50%,-50%) scale(1.07)}
+  .play svg{margin-left:6px}
+  .video-label{position:absolute;left:24px;bottom:20px;z-index:2;color:#fff;font-weight:600;text-align:left;font-size:1rem}
+  .video-caption{text-align:center;color:var(--muted);font-size:.92rem;margin-top:14px}
+
+  /* Grids & cards */
+  .grid{display:grid;gap:22px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}section{padding:60px 0}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .card p{color:var(--muted);margin:0}
+  .num{font-size:.8rem;font-weight:700;color:var(--brand);letter-spacing:.1em;margin-bottom:10px;display:block}
+  .icon{width:44px;height:44px;border-radius:10px;background:var(--brand-tint);display:grid;place-items:center;margin-bottom:14px;color:var(--brand)}
+
+  /* Breakpoints list */
+  .breaks{counter-reset:b;list-style:none;padding:0;margin:0}
+  .breaks li{position:relative;padding:18px 0 18px 58px;border-bottom:1px solid var(--line)}
+  .breaks li:last-child{border-bottom:0}
+  .breaks li::before{counter-increment:b;content:counter(b);position:absolute;left:0;top:16px;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;display:grid;place-items:center}
+  .breaks strong{display:block;margin-bottom:2px}
+  .breaks span{color:var(--muted)}
+
+  /* Split */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  @media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+  /* Chart */
+  .chart-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .chart-card h3{font-size:1rem;margin-bottom:4px}
+  .chart-card .sub{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+  .chart-card svg{width:100%;height:auto}
+  .note{font-size:.78rem;color:var(--muted);margin-top:8px;font-style:italic}
+
+  /* Investor band */
+  .band{background:var(--brand);color:#fff}
+  .band .eyebrow{color:#9fb4ff}
+  .band h2{color:#fff}
+  .band p{color:#dbe4ff}
+  .band .card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+  .band .card h3{color:#fff}
+  .band .card p{color:#dbe4ff}
+  .band .btn{background:#fff;color:var(--brand) !important}
+  .band .btn:hover{background:var(--brand-tint)}
+
+  /* Case */
+  .case{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+  .case-stat{font-size:2.2rem;font-weight:800;color:var(--brand);line-height:1.1}
+  .case-stat small{display:block;font-size:.85rem;font-weight:500;color:var(--muted);margin-top:6px}
+  .tag{display:inline-block;font-size:.78rem;font-weight:600;color:var(--brand);background:var(--brand-tint);padding:4px 10px;border-radius:999px;margin:0 6px 6px 0}
+  @media(max-width:700px){.case{grid-template-columns:1fr}}
+
+  /* Steps */
+  .steps{counter-reset:s}
+  .steps .card{position:relative;padding-top:56px}
+  .steps .card::before{counter-increment:s;content:"0" counter(s);position:absolute;top:22px;left:26px;font-weight:800;color:var(--brand);font-size:1.1rem}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--brand);font-size:1.4rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin:12px 0 0}
+
+  /* CTA */
+  .cta{text-align:center}
+  .cta .lead{margin:0 auto 28px}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;font-size:.88rem;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--brand)}
+</style>
+<script defer src="https://t.contentsquare.net/uxa/d4b372635f512.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">ALIQON<span>Consulting</span></a>
+    <nav class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#sectors">Sectors</a>
+      <a href="index.html#work">Case studies</a>
+      <a href="index.html#about">About</a>
+      <a class="btn" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#services">Services</a> / Airtable setup &amp; automations</div>
+    <span class="eyebrow">07 — Run it</span>
+    <h1>Stop copying status updates by hand.</h1>
+    <p class="lead">Where do your projects, portfolio scores and status updates actually live? For most teams it is a spreadsheet, an email thread and a Slack message, all copied between by hand. We build the Airtable base your workflow actually needs, automate the repetitive parts, and hand it over so your team can run it.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call</a>
+      <a class="btn btn-ghost" href="#build">See what we build</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Why it matters</span>
+        <h2>Good decisions need one place where the facts live.</h2>
+        <p class="lead">Portfolio reviews, stage gates and program updates all depend on current information. When that information is scattered across files and inboxes, people spend their time chasing it instead of acting on it.</p>
+        <p>We design the system around how your team already works, so the tracker reflects reality without someone retyping it every week.</p>
+      </div>
+      <div class="card">
+        <h3>Signs it is time</h3>
+        <ol class="breaks">
+          <li><strong>Several versions of the truth</strong><span>The portfolio list in one file, the status in another, the budget in a third.</span></li>
+          <li><strong>Manual status reporting</strong><span>Someone collects updates and rebuilds the same report every cycle.</span></li>
+          <li><strong>Approvals that stall</strong><span>Requests wait in inboxes with no clear owner or reminder.</span></li>
+          <li><strong>Intake by email</strong><span>New project ideas arrive in every format and have to be re-entered to be scored.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="build">
+  <div class="wrap">
+    <span class="eyebrow">What you walk away with</span>
+    <h2>An Airtable base designed around your workflow.</h2>
+    <p class="lead">No generic template. We start from your process, then build only what your team will use.</p>
+    <div class="grid g4" style="margin-top:32px">
+      <div class="card"><span class="num">TRACK</span><h3>Project &amp; portfolio trackers</h3><p>Projects, scores, stages and owners in one connected base.</p></div>
+      <div class="card"><span class="num">CAPTURE</span><h3>Intake forms</h3><p>A single front door for new requests, so every idea arrives in the same structure.</p></div>
+      <div class="card"><span class="num">SEE</span><h3>Interfaces &amp; dashboards</h3><p>Views built for each audience, from the project team to the sponsor.</p></div>
+      <div class="card"><span class="num">AUTOMATE</span><h3>Automations</h3><p>Status updates, approvals and notifications that run without anyone chasing them.</p></div>
+    </div>
+    <p style="margin-top:28px">Every engagement ends with a handoff your team can maintain, so the system does not depend on us to keep running.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Works with the rest of what we do</span>
+    <h2>The system behind the decisions.</h2>
+    <div class="grid g3" style="margin-top:32px">
+      <div class="card"><h3>Portfolio selection</h3><p>Scoring criteria and stage-gate screens built into the tracker, so every candidate is evaluated the same way.</p></div>
+      <div class="card"><h3>Project chartering</h3><p>Charters, scope boundaries and decision rights kept alongside the project they govern.</p></div>
+      <div class="card"><h3>Program management</h3><p>Plans, risks, issues and reporting cadence in one place, with updates that flow to the people who need them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">How an engagement runs</span>
+    <h2>Fixed scope. Working system. Then we hand it over.</h2>
+    <div class="grid g3 steps" style="margin-top:32px">
+      <div class="card"><h3>Scoping call</h3><p>We learn how work flows through your team today and where it gets stuck. You learn whether we are the right fit.</p></div>
+      <div class="card"><h3>Fixed proposal</h3><p>One page: what we will build, the deliverables, the timeline and a fixed fee set by the scope of work.</p></div>
+      <div class="card"><h3>Build &amp; handoff</h3><p>We build, test with your team and hand over a base your people can maintain.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to retire the copy-and-paste?</h2>
+    <p class="lead">Tell us how your projects and portfolio are tracked today. In one call we will talk through what a first build could look like.</p>
+    <div class="hero-ctas" style="justify-content:center">
+      <a class="btn" href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a scoping call →</a>
+      <a class="btn btn-ghost" href="mailto:kanderson@aliqon.com?subject=Airtable%20setup%20and%20automations">Email kanderson@aliqon.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong style="color:var(--brand);letter-spacing:.12em">ALIQON CONSULTING</strong> · Minneapolis, MN · © 2026</div>
+    <div><a href="index.html">Home</a> · <a href="index.html#services">All services</a> · <a href="https://calendly.com/kenny-entrepreneurialpm/30min">Book a call</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
