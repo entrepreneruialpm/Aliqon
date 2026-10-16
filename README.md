@@ -6,6 +6,7 @@ Static one-page site. No build step.
 - `techno-economic-analysis.html` – techno-economic analysis service page
 - `conjoint.html` – conjoint analysis service page
 - `airtable-automations.html` – Airtable setup and automations service page
+- `project-management.html` – project and program management service page
 - `kenny-portrait.jpg` – About section photo
 
 ## Publish with GitHub Pages
