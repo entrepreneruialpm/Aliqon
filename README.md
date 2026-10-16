@@ -9,6 +9,7 @@ Static one-page site. No build step.
 - `project-management.html` – project and program management service page
 - `marketing-materials.html` – marketing materials development service page
 - `project-chartering.html` – project chartering service page
+- `portfolio-selection.html` – portfolio selection and management service page
 - `kenny-portrait.jpg` – About section photo
 
 ## Publish with GitHub Pages
