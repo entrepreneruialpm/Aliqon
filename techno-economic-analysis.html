@@ -69,8 +69,7 @@
   .video-shell{max-width:920px;margin:48px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px -20px rgba(0,37,153,.35);background:#000;position:relative;aspect-ratio:16/9}
   .video-shell iframe,.video-shell button{position:absolute;inset:0;width:100%;height:100%;border:0}
   .video-facade{cursor:pointer;padding:0;background:#000 center/cover no-repeat}
-  .video-facade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,26,107,.55))}
-  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:var(--brand);display:grid;place-items:center;z-index:2;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
+    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:var(--brand);display:grid;place-items:center;z-index:2;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
   .video-facade:hover .play{transform:translate(-50%,-50%) scale(1.07)}
   .play svg{margin-left:6px}
   .video-label{position:absolute;left:24px;bottom:20px;z-index:2;color:#fff;font-weight:600;text-align:left;font-size:1rem}
@@ -147,6 +146,7 @@
   footer a{color:var(--muted);text-decoration:none}
   footer a:hover{color:var(--brand)}
 </style>
+<script defer src="https://t.contentsquare.net/uxa/d4b372635f512.js"></script>
 </head>
 <body>
 
@@ -179,11 +179,10 @@
 
     <div class="video-shell" id="video">
       <button class="video-facade" id="ytFacade" aria-label="Play video: What techno-economic analysis is and why it matters"
-        style="background-image:url('https://i.ytimg.com/vi/kUR4dJU16VU/maxresdefault.jpg'), url('https://i.ytimg.com/vi/kUR4dJU16VU/hqdefault.jpg')">
+        style="background-image:url('tea-video-poster.webp'), url('https://i.ytimg.com/vi/kUR4dJU16VU/hqdefault.jpg')">
         <span class="play" aria-hidden="true">
           <svg width="30" height="34" viewBox="0 0 30 34"><path d="M0 0 30 17 0 34z" fill="#fff"/></svg>
         </span>
-        <span class="video-label">What techno-economic analysis is — and why it matters</span>
       </button>
     </div>
     <p class="video-caption">A short walkthrough of how TEA works and the decisions it supports.</p>
